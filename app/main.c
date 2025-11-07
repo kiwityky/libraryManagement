@@ -26,7 +26,7 @@ static void member_menu() {
         printf("8.  Gia han the (nhap so thang tuy y)\n");
         printf("9.  Canh bao the sap het han\n");
         printf("0.  Quay lai\n");
-        choice = read_number("Lựa chọn: ", 0, 9);
+        choice = read_number("Lua chon: ", 0, 9);
         switch (choice) {
             case 1: create_member_record(); break;
             case 2: update_member_record(); break;
@@ -56,7 +56,7 @@ static void book_menu() {
         printf("5.  Tim theo ISBN\n");
         printf("6.  Tim theo tieu de\n");
         printf("0.  Quay lai\n");
-        choice = read_number("Lựa chọn: ", 0, 6);
+        choice = read_number("Lua chon: ", 0, 6);
         switch (choice) {
             case 1: add_book_entry(); break;
             case 2: update_book_entry(); break;
@@ -80,7 +80,7 @@ static void loan_menu() {
         printf("2.  Lap phieu tra\n");
         printf("3.  Thong ke sach dang muon\n");
         printf("0.  Quay lai\n");
-        choice = read_number("Lựa chọn: ", 0, 3);
+        choice = read_number("Lua chon: ", 0, 3);
         switch (choice) {
             case 1: create_loan_ticket(); break;
             case 2: process_return_ticket(); break;
@@ -103,7 +103,7 @@ static void report_menu() {
         printf("4.  Danh sach doc gia tre han\n");
         printf("5.  Sach chua tra\n");
         printf("0.  Quay lai\n");
-        choice = read_number("Lựa chọn: ", 0, 5);
+        choice = read_number("Lua chon: ", 0, 5);
         switch (choice) {
             case 1: report_library_numbers(); break;
             case 2: report_member_by_gender(); break;
@@ -132,7 +132,7 @@ int main() {
         printf("3.  Muon / Tra sach\n");
         printf("4.  Bao cao thong ke\n");
         printf("0.  Thoat\n");
-        choice = read_number("Lựa chọn: ", 0, 4);
+        choice = read_number("Lua chon: ", 0, 4);
         switch (choice) {
             case 1: member_menu(); break;
             case 2: book_menu(); break;
@@ -142,6 +142,6 @@ int main() {
         }
     } while (choice != 0);
 
-    printf("Tạm biệt! 👋\n");
+    printf("Tam biet! \n");
     return 0;
 }
