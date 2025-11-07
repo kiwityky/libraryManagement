@@ -66,6 +66,11 @@ void read_text(const char *label, char *buffer, int limit) {
             buffer[0] = '\0';
             continue;
         }
+        // 🔹 Thêm đoạn này để xóa phần còn lại trong stdin (rất quan trọng)
+        if (strchr(buffer, '\n') == NULL) {
+            int ch;
+        while ((ch = getchar()) != '\n' && ch != EOF);
+        }
         trim_text(buffer);
         if (!text_is_empty(buffer)) {
             break;
@@ -78,15 +83,30 @@ int read_number(const char *label, int min_value, int max_value) {
     char line[64];
     int value;
     while (1) {
-        read_text(label, line, sizeof(line));
+        if (label != NULL) {
+            printf("%s", label);
+        }
+
+        if (fgets(line, sizeof(line), stdin) == NULL) {
+            // Nếu nhập lỗi, xóa stdin rồi yêu cầu nhập lại
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) {}
+            continue;
+        }
+
+        // Xóa newline cuối dòng
+        line[strcspn(line, "\n")] = 0;
+
         if (sscanf(line, "%d", &value) != 1) {
             printf("Gia tri khong hop le. Thu lai.\n");
             continue;
         }
+
         if (value < min_value || value > max_value) {
             printf("Vui long nhap trong khoang %d - %d.\n", min_value, max_value);
             continue;
         }
+
         return value;
     }
 }
@@ -96,10 +116,16 @@ void read_date_prompt(const char *label, int *day, int *month, int *year) {
     if (label == NULL) {
         label = "Ngay";
     }
-    snprintf(caption, sizeof(caption), "%s - ngay (1-30): ", label);
+     snprintf(caption, sizeof(caption), "%s - ngay (1-30): ", label);
     *day = read_number(caption, 1, 30);
+
+    printf("\n");  // 👈 thêm dòng trống giữa các prompt
+
     snprintf(caption, sizeof(caption), "%s - thang (1-12): ", label);
     *month = read_number(caption, 1, 12);
-    snprintf(caption, sizeof(caption), "%s - nam (1900-9999): ", label);
-    *year = read_number(caption, 1900, 9999);
+
+    printf("\n");  // 👈 thêm dòng trống giữa các prompt
+
+    snprintf(caption, sizeof(caption), "%s - nam (1900-2025): ", label);
+    *year = read_number(caption, 1900, 2025);
 }

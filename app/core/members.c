@@ -257,6 +257,7 @@ void extend_member_card() {
         printf("Chua co ho so.\n");
         return;
     }
+
     char code[MEMBER_CODE_LEN];
     read_text("Nhap ma the can gia han: ", code, MEMBER_CODE_LEN);
     int index = locate_member_by_code(code);
@@ -264,11 +265,21 @@ void extend_member_card() {
         printf("Khong tim thay ma the.\n");
         return;
     }
-    advance_months_30(member_expire_day[index], member_expire_month[index], member_expire_year[index],
-                     48,
-                     &member_expire_day[index], &member_expire_month[index], &member_expire_year[index]);
-    printf("Da gia han the %s den %02d/%02d/%04d.\n",
+
+    // 👉 Thêm phần nhập số tháng muốn gia hạn
+    int extend_months = read_number("Nhap so thang muon gia han (VD: 12, 24, 48): ", 1, 120);
+
+    advance_months_30(member_expire_day[index],
+                      member_expire_month[index],
+                      member_expire_year[index],
+                      extend_months,
+                      &member_expire_day[index],
+                      &member_expire_month[index],
+                      &member_expire_year[index]);
+
+    printf("Da gia han the %s them %d thang, het han moi: %02d/%02d/%04d.\n",
            code,
+           extend_months,
            member_expire_day[index], member_expire_month[index], member_expire_year[index]);
 }
 
