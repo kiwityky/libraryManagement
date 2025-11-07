@@ -27,7 +27,7 @@ void reset_loan_store();
  *   - Con trỏ tới chuỗi CMND.
  */
 char *loan_idcard_at(int index);
-/**
+/*
  * Chức năng: Lấy con trỏ tới họ tên thành viên trong bản ghi mượn.
  * Tham số:
  *   - index: Chỉ số phiếu mượn.
