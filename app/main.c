@@ -20,7 +20,7 @@ static void member_menu() {
         printf("5. Tim theo ma the\n");
         printf("6. Tim theo CMND\n");
         printf("7. Tim theo ho ten\n");
-        printf("8. Gia han the 48 thang\n");
+        printf("8. Gia han the (nhap so thang tuy y)\n");
         printf("9. Canh bao the sap het han\n");
         printf("0. Quay lai\n");
         choice = read_number("Lua chon: ", 0, 9);
