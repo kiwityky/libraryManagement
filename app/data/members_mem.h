@@ -56,13 +56,11 @@ char *member_gender_at(int index);
  */
 char *member_email_at(int index);
 
-/**
- * Chức năng: Lấy con trỏ đến địa chỉ tại vị trí chỉ định.
+/** Chức năng: Lấy con trỏ đến địa chỉ tại vị trí chỉ định.
  * Tham số:
  *   - index: Chỉ số phần tử (0 <= index < MEMBER_CAPACITY).
  * Giá trị trả về:
- *   - Con trỏ tới vùng lưu địa chỉ.
- */
+ *   - Con trỏ tới vùng lưu địa chỉ. */
 char *member_address_at(int index);
 
 extern int member_birth_day[MEMBER_CAPACITY];
