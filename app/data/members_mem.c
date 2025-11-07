@@ -21,6 +21,13 @@ int member_expire_day[MEMBER_CAPACITY];
 int member_expire_month[MEMBER_CAPACITY];
 int member_expire_year[MEMBER_CAPACITY];
 
+/**
+ * Chức năng: Xóa sạch dữ liệu độc giả đang lưu trong bộ nhớ tĩnh.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void reset_member_store() {
     member_count = 0;
     memset(member_codes, 0, sizeof(member_codes));
@@ -31,30 +38,81 @@ void reset_member_store() {
     memset(member_addresses, 0, sizeof(member_addresses));
 }
 
+/**
+ * Chức năng: Tính địa chỉ của phần tử trong mảng ký tự tuyến tính.
+ * Tham số:
+ *   - base: Con trỏ đến vùng nhớ gốc.
+ *   - limit: Độ dài cố định của mỗi phần tử.
+ *   - index: Vị trí cần truy cập.
+ * Giá trị trả về:
+ *   - Con trỏ đến phần tử tương ứng.
+ */
 static char *slot_at(char *base, int limit, int index) {
     return &base[index * limit];
 }
 
+/**
+ * Chức năng: Lấy con trỏ đến mã thẻ của độc giả tại vị trí cho trước.
+ * Tham số:
+ *   - index: Chỉ số độc giả.
+ * Giá trị trả về:
+ *   - Con trỏ tới chuỗi mã thẻ.
+ */
 char *member_code_at(int index) {
     return slot_at(member_codes, MEMBER_CODE_LEN, index);
 }
 
+/**
+ * Chức năng: Lấy con trỏ đến họ tên độc giả tại vị trí cho trước.
+ * Tham số:
+ *   - index: Chỉ số độc giả.
+ * Giá trị trả về:
+ *   - Con trỏ tới chuỗi họ tên.
+ */
 char *member_name_at(int index) {
     return slot_at(member_names, MEMBER_NAME_LEN, index);
 }
 
+/**
+ * Chức năng: Lấy con trỏ đến CMND của độc giả tại vị trí cho trước.
+ * Tham số:
+ *   - index: Chỉ số độc giả.
+ * Giá trị trả về:
+ *   - Con trỏ tới chuỗi CMND.
+ */
 char *member_idcard_at(int index) {
     return slot_at(member_idcards, MEMBER_IDCARD_LEN, index);
 }
 
+/**
+ * Chức năng: Lấy con trỏ đến giới tính của độc giả tại vị trí cho trước.
+ * Tham số:
+ *   - index: Chỉ số độc giả.
+ * Giá trị trả về:
+ *   - Con trỏ tới chuỗi giới tính.
+ */
 char *member_gender_at(int index) {
     return slot_at(member_genders, MEMBER_GENDER_LEN, index);
 }
 
+/**
+ * Chức năng: Lấy con trỏ đến email của độc giả tại vị trí cho trước.
+ * Tham số:
+ *   - index: Chỉ số độc giả.
+ * Giá trị trả về:
+ *   - Con trỏ tới chuỗi email.
+ */
 char *member_email_at(int index) {
     return slot_at(member_emails, MEMBER_EMAIL_LEN, index);
 }
 
+/**
+ * Chức năng: Lấy con trỏ đến địa chỉ của độc giả tại vị trí cho trước.
+ * Tham số:
+ *   - index: Chỉ số độc giả.
+ * Giá trị trả về:
+ *   - Con trỏ tới chuỗi địa chỉ.
+ */
 char *member_address_at(int index) {
     return slot_at(member_addresses, MEMBER_ADDRESS_LEN, index);
 }

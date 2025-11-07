@@ -8,6 +8,13 @@
 #include "../helpers/input.h"
 #include "../helpers/date.h"
 
+/**
+ * Chức năng: Lập phiếu mượn sách mới cho độc giả và cập nhật kho sách.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void create_loan_ticket() {
     printf("\n===== LAP PHIEU MUON =====\n\n");
     if (loan_count >= LOAN_CAPACITY) {
@@ -66,6 +73,13 @@ void create_loan_ticket() {
            due_day, due_month, due_year);
 }
 
+/**
+ * Chức năng: Hiển thị chi tiết một phiếu mượn gồm sách và trạng thái từng mục.
+ * Tham số:
+ *   - index: Chỉ số phiếu mượn cần trình bày.
+ * Giá trị trả về:
+ *   - void.
+ */
 static void show_single_loan(int index) {
     printf("Phieu #%d\n", index + 1);
     printf(" Thanh vien: %s\n", loan_member_name_at(index));
@@ -86,6 +100,13 @@ static void show_single_loan(int index) {
     }
 }
 
+/**
+ * Chức năng: Xử lý trả sách, tính tiền phạt và cập nhật trạng thái sách.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void process_return_ticket() {
     printf("\n===== LAP PHIEU TRA =====\n\n");
     if (loan_count == 0) {
@@ -160,12 +181,26 @@ void process_return_ticket() {
     }
 }
 
+/**
+ * Chức năng: Thống kê tổng số sách đang được mượn và hiển thị kết quả.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void show_borrowed_overview() {
     printf("\n===== THONG KE SACH DANG MUON =====\n\n");
     int total = count_unreturned_books();
     printf("Tong so sach chua tra: %d\n", total);
 }
 
+/**
+ * Chức năng: Đếm số sách chưa trả trong tất cả phiếu mượn.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - Số sách chưa trả.
+ */
 int count_unreturned_books() {
     int total = 0;
     for (int i = 0; i < loan_count; i++) {

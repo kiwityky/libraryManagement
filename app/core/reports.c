@@ -10,6 +10,13 @@
 #include "../helpers/input.h"
 #include "loans.h"
 
+/**
+ * Chức năng: Thống kê số liệu tổng quan về thư viện.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void report_library_numbers() {
     printf("\n===== TONG QUAN THU VIEN =====\n\n");
     long long total_copies = 0;
@@ -21,6 +28,13 @@ void report_library_numbers() {
     printf("So thanh vien: %d\n", member_count);
 }
 
+/**
+ * Chức năng: Đếm số độc giả theo giới tính nam và nữ.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void report_member_by_gender() {
     printf("\n===== THONG KE GIOI TINH =====\n\n");
     int male = 0;
@@ -41,6 +55,13 @@ void report_member_by_gender() {
     printf("Doc gia nu: %d\n", female);
 }
 
+/**
+ * Chức năng: Thống kê số đầu sách và số bản in theo từng thể loại.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void report_books_by_category() {
     printf("\n===== THONG KE THE LOAI =====\n\n");
     if (book_count == 0) {
@@ -76,6 +97,13 @@ void report_books_by_category() {
     }
 }
 
+/**
+ * Chức năng: Liệt kê các độc giả đang trả sách trễ hạn và số ngày quá hạn.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void report_overdue_readers() {
     printf("\n===== DOC GIA TRE HAN =====\n\n");
     if (loan_count == 0) {
@@ -118,6 +146,13 @@ void report_overdue_readers() {
     }
 }
 
+/**
+ * Chức năng: Báo cáo tổng số sách chưa trả trong thư viện.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void report_active_loans() {
     printf("\n===== SACH CHUA TRA =====\n\n");
     int total = count_unreturned_books();

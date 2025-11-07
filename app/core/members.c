@@ -5,12 +5,26 @@
 #include "../helpers/input.h"
 #include "../helpers/date.h"
 
+/**
+ * Chức năng: In tiêu đề bảng hiển thị danh sách độc giả.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 static void member_table_header() {
     printf("%-4s | %-12s | %-24s | %-12s | %-10s | %-6s | %-24s | %-24s | %-10s | %-10s\n",
            "STT", "Ma the", "Ho ten", "CMND", "Sinh", "Gioi", "Email", "Dia chi", "Lap the", "Het han");
     printf("------------------------------------------------------------------------------------------------------------------------------\n");
 }
 
+/**
+ * Chức năng: In một dòng thông tin độc giả theo định dạng bảng.
+ * Tham số:
+ *   - index: Chỉ số độc giả cần in.
+ * Giá trị trả về:
+ *   - void.
+ */
 static void member_table_row(int index) {
     printf("%-4d | %-12s | %-24s | %-12s | %02d/%02d/%04d | %-6s | %-24s | %-24s | %02d/%02d/%04d | %02d/%02d/%04d\n",
            index + 1,
@@ -25,6 +39,13 @@ static void member_table_row(int index) {
            member_expire_day[index], member_expire_month[index], member_expire_year[index]);
 }
 
+/**
+ * Chức năng: Tìm kiếm chỉ số độc giả thông qua mã thẻ.
+ * Tham số:
+ *   - code: Mã thẻ cần tra cứu.
+ * Giá trị trả về:
+ *   - Chỉ số độc giả hoặc -1 nếu không tìm thấy.
+ */
 int locate_member_by_code(const char *code) {
     for (int i = 0; i < member_count; i++) {
         if (strcmp(member_code_at(i), code) == 0) {
@@ -34,6 +55,13 @@ int locate_member_by_code(const char *code) {
     return -1;
 }
 
+/**
+ * Chức năng: Tìm kiếm chỉ số độc giả thông qua số CMND.
+ * Tham số:
+ *   - idcard: Số CMND cần tra cứu.
+ * Giá trị trả về:
+ *   - Chỉ số độc giả hoặc -1 nếu không tìm thấy.
+ */
 int locate_member_by_idcard(const char *idcard) {
     for (int i = 0; i < member_count; i++) {
         if (strcmp(member_idcard_at(i), idcard) == 0) {
@@ -43,6 +71,13 @@ int locate_member_by_idcard(const char *idcard) {
     return -1;
 }
 
+/**
+ * Chức năng: Dịch trái các bản ghi độc giả sau vị trí chỉ định.
+ * Tham số:
+ *   - start_index: Vị trí bắt đầu dịch.
+ * Giá trị trả về:
+ *   - void.
+ */
 static void shift_members_left(int start_index) {
     for (int i = start_index; i < member_count - 1; i++) {
         copy_text(member_code_at(i), member_code_at(i + 1), MEMBER_CODE_LEN);
@@ -63,6 +98,21 @@ static void shift_members_left(int start_index) {
     }
 }
 
+/**
+ * Chức năng: Ghi các thông tin cơ bản của độc giả vào bộ nhớ.
+ * Tham số:
+ *   - index: Chỉ số độc giả cần ghi.
+ *   - code: Mã thẻ cần lưu.
+ *   - name: Họ tên độc giả.
+ *   - idcard: Số CMND.
+ *   - gender: Giới tính.
+ *   - email: Địa chỉ thư điện tử.
+ *   - address: Địa chỉ cư trú.
+ *   - birth_day, birth_month, birth_year: Thông tin ngày sinh.
+ *   - issue_day, issue_month, issue_year: Thông tin ngày lập thẻ.
+ * Giá trị trả về:
+ *   - void.
+ */
 static void fill_member_base_info(int index, const char *code, const char *name, const char *idcard,
                                   const char *gender, const char *email, const char *address,
                                   int birth_day, int birth_month, int birth_year,
@@ -81,6 +131,13 @@ static void fill_member_base_info(int index, const char *code, const char *name,
     member_issue_year[index] = issue_year;
 }
 
+/**
+ * Chức năng: Liệt kê toàn bộ độc giả cùng số lượng hiện có.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void show_all_members() {
     printf("\n===== DANH SACH THANH VIEN =====\n\n");
     printf("Tong so thanh vien: %d\n", member_count);
@@ -94,6 +151,13 @@ void show_all_members() {
     }
 }
 
+/**
+ * Chức năng: Thu thập thông tin và tạo hồ sơ độc giả mới.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void create_member_record() {
     printf("\n===== THEM THANH VIEN =====\n\n");
     if (member_count >= MEMBER_CAPACITY) {
@@ -143,6 +207,13 @@ void create_member_record() {
     printf("Them thanh vien thanh cong!\n");
 }
 
+/**
+ * Chức năng: Cập nhật dữ liệu một độc giả dựa trên mã thẻ.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void update_member_record() {
     printf("\n===== CAP NHAT THANH VIEN =====\n\n");
     if (member_count == 0) {
@@ -191,6 +262,13 @@ void update_member_record() {
     printf("Cap nhat ho so thanh cong.\n");
 }
 
+/**
+ * Chức năng: Xóa hồ sơ độc giả bằng số CMND.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void remove_member_by_idcard() {
     printf("\n===== XOA THANH VIEN =====\n\n");
     if (member_count == 0) {
@@ -209,6 +287,13 @@ void remove_member_by_idcard() {
     printf("Da xoa ho so co CMND %s.\n", idcard);
 }
 
+/**
+ * Chức năng: Tra cứu độc giả bằng mã thẻ và hiển thị kết quả.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void find_member_via_code() {
     char code[MEMBER_CODE_LEN];
     read_text("Nhap ma the: ", code, MEMBER_CODE_LEN);
@@ -221,6 +306,13 @@ void find_member_via_code() {
     member_table_row(index);
 }
 
+/**
+ * Chức năng: Tra cứu độc giả bằng số CMND và hiển thị kết quả.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void find_member_via_idcard() {
     char idcard[MEMBER_IDCARD_LEN];
     read_text("Nhap CMND: ", idcard, MEMBER_IDCARD_LEN);
@@ -233,6 +325,13 @@ void find_member_via_idcard() {
     member_table_row(index);
 }
 
+/**
+ * Chức năng: Tìm các độc giả trùng họ tên nhập vào.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void find_member_via_name() {
     char name[MEMBER_NAME_LEN];
     read_text("Nhap ho ten: ", name, MEMBER_NAME_LEN);
@@ -251,6 +350,13 @@ void find_member_via_name() {
     }
 }
 
+/**
+ * Chức năng: Gia hạn thẻ thư viện cho độc giả theo số tháng nhập vào.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void extend_member_card() {
     printf("\n===== GIA HAN THE =====\n\n");
     if (member_count == 0) {
@@ -283,6 +389,13 @@ void extend_member_card() {
            member_expire_day[index], member_expire_month[index], member_expire_year[index]);
 }
 
+/**
+ * Chức năng: Thông báo các thẻ sẽ hết hạn trong vòng 30 ngày kể từ ngày kiểm tra.
+ * Tham số:
+ *   - Không có.
+ * Giá trị trả về:
+ *   - void.
+ */
 void announce_expiring_cards() {
     printf("\n===== CANH BAO HET HAN =====\n\n");
     if (member_count == 0) {
