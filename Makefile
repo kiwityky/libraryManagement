@@ -3,7 +3,7 @@ CFLAGS=-std=c11 -Wall -Wextra -O2
 INCLUDES=-Iapp -Iapp/core -Iapp/data -Iapp/helpers
 SRCS=$(filter-out app/main.c,$(wildcard app/*.c)) $(wildcard app/core/*.c) $(wildcard app/data/*.c) $(wildcard app/helpers/*.c)
 OBJS=$(SRCS:.c=.o)
-TARGET=library_refactored
+TARGET=library_management
 
 all: $(TARGET)
 

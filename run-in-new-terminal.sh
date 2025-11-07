@@ -6,9 +6,9 @@
 echo "🔨 Building project..."
 
 # Remove old executable if it exists
-if [ -f "library_manager" ]; then
+if [ -f "library_management" ]; then
     echo "🗑️  Removing old executable..."
-    rm -f library_manager
+    rm -f library_management
 fi
 
 # Build using Makefile
@@ -19,16 +19,16 @@ if [ $? -eq 0 ]; then
     
     # Try different terminal emulators
     if command -v gnome-terminal &> /dev/null; then
-        gnome-terminal -- bash -c "cd '$PWD' && echo '🚀 Running library_manager...' && ./library_manager; echo; echo 'Press Enter to close...'; read"
+        gnome-terminal -- bash -c "cd '$PWD' && echo '🚀 Running library_management...' && ./library_management; echo; echo 'Press Enter to close...'; read"
     elif command -v xfce4-terminal &> /dev/null; then
-        xfce4-terminal --working-directory="$PWD" -e "bash -c 'echo \"🚀 Running library_manager...\" && ./library_manager; echo; echo \"Press Enter to close...\"; read'"
+        xfce4-terminal --working-directory="$PWD" -e "bash -c 'echo \"🚀 Running library_management...\" && ./library_management; echo; echo \"Press Enter to close...\"; read'"
     elif command -v konsole &> /dev/null; then
-        konsole --workdir "$PWD" -e bash -c "echo '🚀 Running library_manager...' && ./library_manager; echo; echo 'Press Enter to close...'; read"
+        konsole --workdir "$PWD" -e bash -c "echo '🚀 Running library_management...' && ./library_management; echo; echo 'Press Enter to close...'; read"
     elif command -v xterm &> /dev/null; then
-        xterm -e "cd '$PWD' && echo '🚀 Running library_manager...' && ./library_manager; echo; echo 'Press Enter to close...'; read"
+        xterm -e "cd '$PWD' && echo '🚀 Running library_management...' && ./library_management; echo; echo 'Press Enter to close...'; read"
     else
         echo "No suitable terminal emulator found. Running in current terminal:"
-        ./library_manager
+        ./library_management
     fi
 else
     echo "❌ Build failed!"

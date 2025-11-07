@@ -4,9 +4,9 @@
 echo "🔨 Building project..."
 
 # Remove old executable if it exists
-if [ -f "library_manager" ]; then
+if [ -f "library_management" ]; then
     echo "🗑️  Removing old executable..."
-    rm -f library_manager
+    rm -f library_management
 fi
 
 # Build using Makefile
@@ -19,7 +19,7 @@ if [ $? -eq 0 ]; then
     echo "===================="
     
     # Run the program
-    ./library_manager
+    ./library_management
 else
     echo "❌ Build failed!"
     exit 1

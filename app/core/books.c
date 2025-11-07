@@ -4,26 +4,16 @@
 #include "books.h"
 #include "../helpers/input.h"
 
-/**
- * Chức năng: In tiêu đề bảng danh mục sách.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: In tiêu đề bảng danh mục sách. 
 static void book_table_header() {
     printf("%-4s | %-14s | %-30s | %-18s | %-18s | %-14s | %-8s | %-8s | %-8s\n",
            "STT", "ISBN", "Tieu de", "Tac gia", "Nha XB", "The loai", "Nam", "Tong", "Con");
     printf("------------------------------------------------------------------------------------------------------------------------------------\n");
 }
 
-/**
- * Chức năng: In thông tin một quyển sách theo định dạng bảng.
- * Tham số:
- *   - index: Chỉ số sách cần hiển thị.
- * Giá trị trả về:
- *   - void.
- */
+/**Chức năng: In thông tin một quyển sách theo định dạng bảng.
+ * Tham số: index: Chỉ số sách cần hiển thị.
+ * Giá trị trả về: void.*/
 static void book_table_row(int index) {
     printf("%-4d | %-14s | %-30s | %-18s | %-18s | %-14s | %-8d | %-8d | %-8d\n",
            index + 1,
@@ -37,13 +27,9 @@ static void book_table_row(int index) {
            book_available_copy[index]);
 }
 
-/**
- * Chức năng: Tìm chỉ số sách dựa trên ISBN.
- * Tham số:
- *   - isbn: Chuỗi ISBN cần tra cứu.
- * Giá trị trả về:
- *   - Chỉ số sách hoặc -1 nếu không tìm thấy.
- */
+/**Chức năng: Tìm chỉ số sách dựa trên ISBN.
+ * Tham số: isbn: Chuỗi ISBN cần tra cứu.
+ * Giá trị trả về: Chỉ số sách hoặc -1 nếu không tìm thấy.*/
 int locate_book_by_isbn(const char *isbn) {
     for (int i = 0; i < book_count; i++) {
         if (strcmp(book_isbn_at(i), isbn) == 0) {
@@ -53,13 +39,9 @@ int locate_book_by_isbn(const char *isbn) {
     return -1;
 }
 
-/**
- * Chức năng: Dịch trái các bản ghi sách kể từ vị trí cho trước.
- * Tham số:
- *   - start_index: Chỉ số bắt đầu dịch.
- * Giá trị trả về:
- *   - void.
- */
+/**Chức năng: Dịch trái các bản ghi sách kể từ vị trí cho trước.
+ * Tham số: start_index: Chỉ số bắt đầu dịch.
+ * Giá trị trả về: void.*/
 static void shift_books_left(int start_index) {
     for (int i = start_index; i < book_count - 1; i++) {
         copy_text(book_isbn_at(i), book_isbn_at(i + 1), BOOK_ISBN_LEN);
@@ -74,13 +56,7 @@ static void shift_books_left(int start_index) {
     }
 }
 
-/**
- * Chức năng: Hiển thị toàn bộ danh mục sách hiện có.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Hiển thị toàn bộ danh mục sách hiện có.
 void list_books() {
     printf("\n===== DANH MUC SACH =====\n\n");
     printf("Tong so dau sach: %d\n", book_count);
@@ -94,13 +70,7 @@ void list_books() {
     }
 }
 
-/**
- * Chức năng: Thu thập thông tin và thêm sách mới vào kho.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Thu thập thông tin và thêm sách mới vào kho.
 void add_book_entry() {
     printf("\n===== THEM SACH =====\n\n");
     if (book_count >= BOOK_CAPACITY) {
@@ -147,13 +117,7 @@ void add_book_entry() {
     printf("Da them sach moi.\n");
 }
 
-/**
- * Chức năng: Chỉnh sửa thông tin của một bản ghi sách.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Chỉnh sửa thông tin của một bản ghi sách. 
 void update_book_entry() {
     printf("\n===== CAP NHAT SACH =====\n\n");
     if (book_count == 0) {
@@ -203,13 +167,7 @@ void update_book_entry() {
     printf("Cap nhat sach thanh cong.\n");
 }
 
-/**
- * Chức năng: Xóa sách khỏi kho dựa trên ISBN.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Xóa sách khỏi kho dựa trên ISBN.
 void remove_book_by_isbn() {
     printf("\n===== XOA SACH =====\n\n");
     if (book_count == 0) {
@@ -228,13 +186,7 @@ void remove_book_by_isbn() {
     printf("Da xoa sach co ISBN %s.\n", isbn);
 }
 
-/**
- * Chức năng: Tra cứu và hiển thị sách theo ISBN.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Tra cứu và hiển thị sách theo ISBN.
 void search_book_by_isbn() {
     char isbn[BOOK_ISBN_LEN];
     read_text("Nhap ISBN can tim: ", isbn, BOOK_ISBN_LEN);
@@ -247,13 +199,7 @@ void search_book_by_isbn() {
     book_table_row(index);
 }
 
-/**
- * Chức năng: Tra cứu và hiển thị sách khớp tiêu đề nhập vào.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Tra cứu và hiển thị sách khớp tiêu đề nhập vào.
 void search_book_by_title() {
     char title[BOOK_TITLE_LEN];
     read_text("Nhap tieu de: ", title, BOOK_TITLE_LEN);

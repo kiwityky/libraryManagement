@@ -9,13 +9,7 @@
 #include "data/loans_mem.h"
 #include "helpers/input.h"
 
-/**
- * Chức năng: Hiển thị và xử lý các tùy chọn quản lý thành viên.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Hiển thị và xử lý các tùy chọn quản lý thành viên.
 static void member_menu() {
     int choice;
     do {
@@ -48,13 +42,7 @@ static void member_menu() {
     } while (choice != 0);
 }
 
-/**
- * Chức năng: Hiển thị và xử lý các tùy chọn quản lý sách.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Hiển thị và xử lý các tùy chọn quản lý sách.
 static void book_menu() {
     int choice;
     do {
@@ -81,13 +69,7 @@ static void book_menu() {
     } while (choice != 0);
 }
 
-/**
- * Chức năng: Hiển thị và xử lý các tùy chọn mượn trả sách.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Hiển thị và xử lý các tùy chọn mượn trả sách.
 static void loan_menu() {
     int choice;
     do {
@@ -108,13 +90,7 @@ static void loan_menu() {
     } while (choice != 0);
 }
 
-/**
- * Chức năng: Hiển thị và xử lý các báo cáo thống kê.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Hiển thị và xử lý các báo cáo thống kê.
 static void report_menu() {
     int choice;
     do {
@@ -139,13 +115,8 @@ static void report_menu() {
     } while (choice != 0);
 }
 
-/**
- * Chức năng: Điểm vào chương trình và điều phối các menu chính.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - Mã thoát chương trình (0 khi thành công).
- */
+/**Chức năng: Điểm vào chương trình và điều phối các menu chính.
+ * Giá trị trả về: Mã thoát chương trình (0 khi thành công).*/
 int main() {
     reset_member_store();
     reset_book_store();

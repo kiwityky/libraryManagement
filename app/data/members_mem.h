@@ -11,23 +11,15 @@
 
 extern int member_count;
 
-/**
- * Chức năng: Đặt lại toàn bộ dữ liệu lưu trữ độc giả trong bộ nhớ.
- * Tham số:
- *   - Không có.
- * Giá trị trả về:
- *   - void.
- */
+//Chức năng: Đặt lại toàn bộ dữ liệu lưu trữ độc giả trong bộ nhớ.
 void reset_member_store();
 
-/**
- * Chức năng: Lấy con trỏ đến mã thẻ tại vị trí chỉ định.
- * Tham số:
- *   - index: Chỉ số phần tử (0 <= index < MEMBER_CAPACITY).
- * Giá trị trả về:
- *   - Con trỏ tới vùng lưu mã thẻ.
+/** Chức năng: Lấy con trỏ đến mã thẻ tại vị trí chỉ định.
+ * Tham số: index: Chỉ số phần tử (0 <= index < MEMBER_CAPACITY).
+ * Giá trị trả về: Con trỏ tới vùng lưu mã thẻ.
  */
 char *member_code_at(int index);
+
 /**
  * Chức năng: Lấy con trỏ đến họ tên tại vị trí chỉ định.
  * Tham số:
@@ -36,6 +28,7 @@ char *member_code_at(int index);
  *   - Con trỏ tới vùng lưu họ tên.
  */
 char *member_name_at(int index);
+
 /**
  * Chức năng: Lấy con trỏ đến số CMND tại vị trí chỉ định.
  * Tham số:
@@ -44,6 +37,7 @@ char *member_name_at(int index);
  *   - Con trỏ tới vùng lưu CMND.
  */
 char *member_idcard_at(int index);
+
 /**
  * Chức năng: Lấy con trỏ đến giới tính tại vị trí chỉ định.
  * Tham số:
@@ -52,6 +46,7 @@ char *member_idcard_at(int index);
  *   - Con trỏ tới vùng lưu giới tính.
  */
 char *member_gender_at(int index);
+
 /**
  * Chức năng: Lấy con trỏ đến email tại vị trí chỉ định.
  * Tham số:
@@ -60,6 +55,7 @@ char *member_gender_at(int index);
  *   - Con trỏ tới vùng lưu email.
  */
 char *member_email_at(int index);
+
 /**
  * Chức năng: Lấy con trỏ đến địa chỉ tại vị trí chỉ định.
  * Tham số:
