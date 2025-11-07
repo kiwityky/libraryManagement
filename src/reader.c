@@ -314,3 +314,39 @@ void cap_nhat_doc_gia() {
 
     printf("\nDa cap nhat thong tin doc gia CMND %s thanh cong.\n\n", cmnd);
 }
+
+/*
+ * Gia hạn thẻ độc giả thêm 48 tháng kể từ ngày hết hạn hiện tại.
+ */
+void gia_han_the_doc_gia() {
+    char cmnd[LENGTH_CMND];
+    nhap_chuoi("Nhap CMND cua doc gia can gia han the: ", cmnd, LENGTH_CMND);
+    int index = tim_doc_gia_by_cmnd(cmnd);
+    if (index == -1) {
+        printf("Khong tim thay doc gia voi CMND nay.\n");
+        return;
+    }
+
+    printf("\nTruoc khi gia han:\n");
+    printf("Ngay het han cu: %02d/%02d/%04d\n",
+           g_doc_gia_ngay_het_han_the[index],
+           g_doc_gia_thang_het_han_the[index],
+           g_doc_gia_nam_het_han_the[index]);
+
+    int ngay_moi, thang_moi, nam_moi;
+    cong_thang_gia_dinh_30(
+        g_doc_gia_ngay_het_han_the[index],
+        g_doc_gia_thang_het_han_the[index],
+        g_doc_gia_nam_het_han_the[index],
+        48, // gia hạn thêm 48 tháng
+        &ngay_moi, &thang_moi, &nam_moi
+    );
+
+    g_doc_gia_ngay_het_han_the[index] = ngay_moi;
+    g_doc_gia_thang_het_han_the[index] = thang_moi;
+    g_doc_gia_nam_het_han_the[index] = nam_moi;
+
+    printf("Da gia han the them 48 thang thanh cong!\n");
+    printf("Ngay het han moi: %02d/%02d/%04d\n",
+           ngay_moi, thang_moi, nam_moi);
+}

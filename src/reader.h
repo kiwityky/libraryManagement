@@ -16,5 +16,6 @@ void tim_doc_gia_bang_ma();
 void tim_doc_gia_bang_cmnd();
 void tim_doc_gia_bang_ho_va_ten();
 void cap_nhat_doc_gia();
+void gia_han_the_doc_gia();
 
 #endif
