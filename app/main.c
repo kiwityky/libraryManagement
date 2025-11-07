@@ -13,19 +13,19 @@
 static void member_menu() {
     int choice;
     do {
-        printf("\n👤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("🧑‍🤝‍🧑 QUẢN LÝ THÀNH VIÊN\n");
-        printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("1️⃣  Thêm thành viên mới\n");
-        printf("2️⃣  Cập nhật thông tin\n");
-        printf("3️⃣  Xóa theo CMND\n");
-        printf("4️⃣  Xem danh sách\n");
-        printf("5️⃣  Tìm theo mã thẻ\n");
-        printf("6️⃣  Tìm theo CMND\n");
-        printf("7️⃣  Tìm theo họ tên\n");
-        printf("8️⃣  Gia hạn thẻ (nhập số tháng tùy ý)\n");
-        printf("9️⃣  Cảnh báo thẻ sắp hết hạn\n");
-        printf("0️⃣  🔙 Quay lại\n");
+        printf("\n----------------------------------------------\n");
+        printf("QUAN LY THANH VIEN\n");
+        printf("----------------------------------------------\n");
+        printf("1.  Them thanh vien moi\n");
+        printf("2.  Cap nhat thong tin\n");
+        printf("3.  Xoa theo CMND\n");
+        printf("4.  Xem danh sach\n");
+        printf("5.  Tim theo ma the\n");
+        printf("6.  Tim theo CMND\n");
+        printf("7.  Tim theo ho ten\n");
+        printf("8.  Gia han the (nhap so thang tuy y)\n");
+        printf("9.  Canh bao the sap het han\n");
+        printf("0.  Quay lai\n");
         choice = read_number("Lựa chọn: ", 0, 9);
         switch (choice) {
             case 1: create_member_record(); break;
@@ -46,16 +46,16 @@ static void member_menu() {
 static void book_menu() {
     int choice;
     do {
-        printf("\n📚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("📘 QUẢN LÝ SÁCH\n");
-        printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("1️⃣  Thêm sách mới\n");
-        printf("2️⃣  Cập nhật thông tin sách\n");
-        printf("3️⃣  Xóa sách\n");
-        printf("4️⃣  Danh mục sách\n");
-        printf("5️⃣  Tìm theo ISBN\n");
-        printf("6️⃣  Tìm theo tiêu đề\n");
-        printf("0️⃣  🔙 Quay lại\n");
+        printf("\n----------------------------------------------\n");
+        printf("QUAN LY SACH\n");
+        printf("----------------------------------------------\n");
+        printf("1.  Them sach moi\n");
+        printf("2.  Cap nhat thong tin sach\n");
+        printf("3.  Xoa sach\n");
+        printf("4.  Danh muc sach\n");
+        printf("5.  Tim theo ISBN\n");
+        printf("6.  Tim theo tieu de\n");
+        printf("0.  Quay lai\n");
         choice = read_number("Lựa chọn: ", 0, 6);
         switch (choice) {
             case 1: add_book_entry(); break;
@@ -73,13 +73,13 @@ static void book_menu() {
 static void loan_menu() {
     int choice;
     do {
-        printf("\n📖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("📥 MƯỢN / TRẢ SÁCH\n");
-        printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("1️⃣  Lập phiếu mượn\n");
-        printf("2️⃣  Lập phiếu trả\n");
-        printf("3️⃣  Thống kê sách đang mượn\n");
-        printf("0️⃣  🔙 Quay lại\n");
+        printf("\n----------------------------------------------\n");
+        printf("MUON / TRA SACH\n");
+        printf("----------------------------------------------\n");
+        printf("1.  Lap phieu muon\n");
+        printf("2.  Lap phieu tra\n");
+        printf("3.  Thong ke sach dang muon\n");
+        printf("0.  Quay lai\n");
         choice = read_number("Lựa chọn: ", 0, 3);
         switch (choice) {
             case 1: create_loan_ticket(); break;
@@ -94,15 +94,15 @@ static void loan_menu() {
 static void report_menu() {
     int choice;
     do {
-        printf("\n📊━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("🧾 BÁO CÁO THỐNG KÊ\n");
-        printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("1️⃣  Tổng quan thư viện\n");
-        printf("2️⃣  Thống kê độc giả theo giới tính\n");
-        printf("3️⃣  Thống kê thể loại sách\n");
-        printf("4️⃣  Danh sách độc giả trễ hạn\n");
-        printf("5️⃣  Sách chưa trả\n");
-        printf("0️⃣  🔙 Quay lại\n");
+        printf("\n----------------------------------------------\n");
+        printf("BAO CAO THONG KE\n");
+        printf("----------------------------------------------\n");
+        printf("1.  Tong quan thu vien\n");
+        printf("2.  Thong ke doc gia theo gioi tinh\n");
+        printf("3.  Thong ke the loai sach\n");
+        printf("4.  Danh sach doc gia tre han\n");
+        printf("5.  Sach chua tra\n");
+        printf("0.  Quay lai\n");
         choice = read_number("Lựa chọn: ", 0, 5);
         switch (choice) {
             case 1: report_library_numbers(); break;
@@ -124,14 +124,14 @@ int main() {
 
     int choice;
     do {
-        printf("\n🏛️━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("📚 TRÌNH QUẢN LÝ THƯ VIỆN\n");
-        printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-        printf("1️⃣  Quản lý thành viên\n");
-        printf("2️⃣  Quản lý sách\n");
-        printf("3️⃣  Mượn / Trả sách\n");
-        printf("4️⃣  Báo cáo thống kê\n");
-        printf("0️⃣  🔚 Thoát\n");
+        printf("\n----------------------------------------------\n");
+        printf("TRINH QUAN LY THU VIEN\n");
+        printf("----------------------------------------------\n");
+        printf("1.  Quan ly thanh vien\n");
+        printf("2.  Quan ly sach\n");
+        printf("3.  Muon / Tra sach\n");
+        printf("4.  Bao cao thong ke\n");
+        printf("0.  Thoat\n");
         choice = read_number("Lựa chọn: ", 0, 4);
         switch (choice) {
             case 1: member_menu(); break;
